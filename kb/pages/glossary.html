@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>术语表 — 衡石手册</title>
+  <meta name="description" content="列出衡石手册的规范说法。口头说法和正文不一致时，先把别名换成规范词再检索。">
+  <link rel="stylesheet" href="/kb/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "术语表",
+    "description": "列出衡石手册的规范说法。口头说法和正文不一致时，先把别名换成规范词再检索。",
+    "inLanguage": "zh-CN",
+    "hasPart": [
+      {"@type": "WebPageElement", "name": "物料", "cssSelector": "#term-item"},
+      {"@type": "WebPageElement", "name": "采购订单", "cssSelector": "#term-po"},
+      {"@type": "WebPageElement", "name": "采购目录", "cssSelector": "#term-catalog"},
+      {"@type": "WebPageElement", "name": "阶梯价", "cssSelector": "#term-tier"},
+      {"@type": "WebPageElement", "name": "销售订单", "cssSelector": "#term-so"},
+      {"@type": "WebPageElement", "name": "现存量", "cssSelector": "#term-onhand"},
+      {"@type": "WebPageElement", "name": "审核", "cssSelector": "#term-approval"},
+      {"@type": "WebPageElement", "name": "入库单", "cssSelector": "#term-inbound"},
+      {"@type": "WebPageElement", "name": "运单", "cssSelector": "#term-waybill"},
+      {"@type": "WebPageElement", "name": "在途异常", "cssSelector": "#term-exception"},
+      {"@type": "WebPageElement", "name": "应付", "cssSelector": "#term-ap"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/kb/index.html">衡石手册</a>
+    <p class="header-note">ERP 使用说明</p>
+  </header>
+  <div class="page">
+    <nav class="site-nav" aria-label="手册目录">
+      <p class="nav-label">目录</p>
+      <ol class="nav-list">
+        <li><a href="/kb/index.html">产品概览</a></li>
+        <li><a href="/kb/pages/access.html">登录与权限</a></li>
+        <li><a href="/kb/pages/master-data.html">基础资料</a></li>
+        <li><a href="/kb/pages/approval.html">审核</a></li>
+        <li><a href="/kb/pages/purchase.html">采购</a></li>
+        <li><a href="/kb/pages/sales.html">销售</a></li>
+        <li><a href="/kb/pages/inventory.html">库存</a></li>
+        <li><a href="/kb/pages/wms.html">WMS 对接</a></li>
+        <li><a href="/kb/pages/shipping.html">发运</a></li>
+        <li><a href="/kb/pages/finance.html">财务系统对接</a></li>
+        <li><a href="/kb/pages/faq.html">常见问题</a></li>
+        <li><a href="/kb/pages/troubleshoot.html">故障排查</a></li>
+        <li><a href="/kb/pages/glossary.html" aria-current="page">术语表</a></li>
+      </ol>
+    </nav>
+    <main>
+      <article class="article" data-doc-id="glossary" data-doc-title="术语表">
+        <header class="article-head">
+          <p class="breadcrumb">衡石手册 / 术语表</p>
+          <h1>术语表</h1>
+          <p class="summary">列出衡石手册的规范说法。口头说法和正文不一致时，先把别名换成规范词再检索。</p>
+          <nav class="onpage" aria-label="本页目录">
+            <ol>
+              <li><a href="#term-item">物料</a></li>
+              <li><a href="#term-po">采购订单</a></li>
+              <li><a href="#term-catalog">采购目录</a></li>
+              <li><a href="#term-tier">阶梯价</a></li>
+              <li><a href="#term-so">销售订单</a></li>
+              <li><a href="#term-onhand">现存量</a></li>
+              <li><a href="#term-approval">审核</a></li>
+              <li><a href="#term-inbound">入库单</a></li>
+              <li><a href="#term-waybill">运单</a></li>
+              <li><a href="#term-exception">在途异常</a></li>
+              <li><a href="#term-ap">应付</a></li>
+            </ol>
+          </nav>
+        </header>
+        <section id="term-item" data-section-id="term-item">
+          <h2>物料</h2>
+          <p>在衡石中，<dfn data-term="物料">物料</dfn>是采购、销售和库存单据引用的基本对象，有编码、名称和基本单位。</p>
+          <p>物料停用后不能被新单据选择。已被引用的物料不能删除。仓库实物数量不写在物料主数据上，而写在现存量里。</p>
+          <p class="alias">也可称为存货。</p>
+        </section>
+        <section id="term-po" data-section-id="term-po">
+          <h2>采购订单</h2>
+          <p>在衡石中，<dfn data-term="采购订单">采购订单</dfn>是向合格供应商购买已审核物料的单据，审核通过后才能分批送货。</p>
+          <p>它依赖已通过的供应商引入、采购目录和价格。一张采购订单可以对应多张入库单。</p>
+          <p class="alias">也可称为 PO。</p>
+        </section>
+        <section id="term-catalog" data-section-id="term-catalog">
+          <h2>采购目录</h2>
+          <p>在衡石中，<dfn data-term="采购目录">采购目录</dfn>是合格供应商可以供应的物料范围。</p>
+          <p>目录未审核通过时，采购订单不能选择该供应商的该物料。追加物料要单独再审一次。</p>
+          <p class="alias">也可称为供货范围。</p>
+        </section>
+        <section id="term-tier" data-section-id="term-tier">
+          <h2>阶梯价</h2>
+          <p>在衡石中，<dfn data-term="阶梯价">阶梯价</dfn>是同一区域内按采购数量分档的价格，数量越大价格越低，跨档后按对应档计价。</p>
+          <p>它必须和区域一起审核。不同区域可以有不同价格。未审核通过的价格不能被采购订单取用。审核记录会保留上一版已通过的价格，供新版本未通过时继续使用。</p>
+          <p class="alias">也可称为数量档价格。</p>
+        </section>
+        <section id="term-so" data-section-id="term-so">
+          <h2>销售订单</h2>
+          <p>在衡石中，<dfn data-term="销售订单">销售订单</dfn>是向客户销售物料的单据，审核通过后才能下发出库单。</p>
+          <p>收货地址不完整时不能进入发运。签收完成后才推送应收。</p>
+        </section>
+        <section id="term-onhand" data-section-id="term-onhand">
+          <h2>现存量</h2>
+          <p>在衡石中，<dfn data-term="现存量">现存量</dfn>是按仓库和物料汇总的逻辑数量，由 WMS 回传更新。</p>
+          <p>不能在衡石中直接修改这个数量。差异通过盘点审核后，再由 WMS 回传。</p>
+        </section>
+        <section id="term-approval" data-section-id="term-approval">
+          <h2>审核</h2>
+          <p>在衡石中，<dfn data-term="审核">审核</dfn>是审核人对已提交单据作出通过或驳回的决定。</p>
+          <p>通过后才能进入下一步或下发外部系统。驳回后退回制单人，修改后要重新提交。制单人不能审核自己提交的单据。</p>
+        </section>
+        <section id="term-inbound" data-section-id="term-inbound">
+          <h2>入库单</h2>
+          <p>在衡石中，<dfn data-term="入库单">入库单</dfn>是衡石下发给 WMS 的收货指令。</p>
+          <p>采购按批次生成，一批一张。WMS 回传实收后，衡石才更新收货并推送应付。</p>
+          <p class="alias">也可称为 WMS 收货任务。</p>
+        </section>
+        <section id="term-waybill" data-section-id="term-waybill">
+          <h2>运单</h2>
+          <p>在衡石中，<dfn data-term="运单">运单</dfn>是发运下单后的跟踪对象，用来查询进度和记录异常。</p>
+          <p>自有物流的运单来自 TMS。第三方承运商的运单号由承运商回写。运单号为空时不能查询进度。</p>
+          <p class="alias">也可称为运输任务。第三方承运商也可称为外部快递。</p>
+        </section>
+        <section id="term-exception" data-section-id="term-exception">
+          <h2>在途异常</h2>
+          <p>在衡石中，滞留、拒收、地址错误和破损统称<dfn data-term="物流异常">物流异常</dfn>。</p>
+          <p>自有物流在 TMS 中处理，第三方承运商向承运商发起拦截或改址。异常未关闭时不能签收，也不能推送应收。处理结果必须回写衡石。</p>
+        </section>
+        <section id="term-ap" data-section-id="term-ap">
+          <h2>应付</h2>
+          <p>在衡石中，<dfn data-term="应付">应付</dfn>是按采购每一批实收数量推送给财务系统的业务凭证。</p>
+          <p>不等整张采购订单收完。财务系统拒绝时，衡石保持未入账，修正后重新推送。</p>
+        </section>
+      </article>
+      <nav class="pager" aria-label="前后文">
+        <a href="/kb/pages/troubleshoot.html">上一篇：故障排查</a>
+        <span></span>
+      </nav>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <p>衡石手册。正文写在文章小节中，供人阅读，并作为问答检索的来源。</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>财务系统对接 — 衡石手册</title>
+  <meta name="description" content="采购按每一批实收推送应付，销售在签收完成后推送应收。衡石不在系统内过账或结账。">
+  <link rel="stylesheet" href="/kb/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "财务系统对接",
+    "description": "采购按每一批实收推送应付，销售在签收完成后推送应收。衡石不在系统内过账或结账。",
+    "inLanguage": "zh-CN",
+    "hasPart": [
+      {"@type": "WebPageElement", "name": "按批次推送应付", "cssSelector": "#finance-ap"},
+      {"@type": "WebPageElement", "name": "签收后确认应收", "cssSelector": "#finance-ar"},
+      {"@type": "WebPageElement", "name": "凭证被拒绝时怎么办", "cssSelector": "#finance-reject"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/kb/index.html">衡石手册</a>
+    <p class="header-note">ERP 使用说明</p>
+  </header>
+  <div class="page">
+    <nav class="site-nav" aria-label="手册目录">
+      <p class="nav-label">目录</p>
+      <ol class="nav-list">
+        <li><a href="/kb/index.html">产品概览</a></li>
+        <li><a href="/kb/pages/access.html">登录与权限</a></li>
+        <li><a href="/kb/pages/master-data.html">基础资料</a></li>
+        <li><a href="/kb/pages/approval.html">审核</a></li>
+        <li><a href="/kb/pages/purchase.html">采购</a></li>
+        <li><a href="/kb/pages/sales.html">销售</a></li>
+        <li><a href="/kb/pages/inventory.html">库存</a></li>
+        <li><a href="/kb/pages/wms.html">WMS 对接</a></li>
+        <li><a href="/kb/pages/shipping.html">发运</a></li>
+        <li><a href="/kb/pages/finance.html" aria-current="page">财务系统对接</a></li>
+        <li><a href="/kb/pages/faq.html">常见问题</a></li>
+        <li><a href="/kb/pages/troubleshoot.html">故障排查</a></li>
+        <li><a href="/kb/pages/glossary.html">术语表</a></li>
+      </ol>
+    </nav>
+    <main>
+      <article class="article" data-doc-id="finance" data-doc-title="财务系统对接">
+        <header class="article-head">
+          <p class="breadcrumb">衡石手册 / 财务系统对接</p>
+          <h1>财务系统对接</h1>
+          <p class="summary">采购按每一批实收推送应付，销售在签收完成后推送应收。衡石不在系统内过账或结账。</p>
+          <nav class="onpage" aria-label="本页目录">
+            <ol>
+              <li><a href="#finance-ap">按批次推送应付</a></li>
+              <li><a href="#finance-ar">签收后确认应收</a></li>
+              <li><a href="#finance-reject">凭证被拒绝时怎么办</a></li>
+            </ol>
+          </nav>
+        </header>
+        <section id="finance-ap" data-section-id="finance-ap">
+          <h2>按批次推送应付</h2>
+          <p>在衡石中，应付按采购每一批实收数量推送财务系统，不等整张采购订单收完。</p>
+          <p>该批还没有 WMS 实收回传时，不推送应付。推送成功后，财务系统生成对应凭证。衡石只保留推送状态。</p>
+        </section>
+        <section id="finance-ar" data-section-id="finance-ar">
+          <h2>签收后确认应收</h2>
+          <p>在衡石中，应收在销售签收完成后按签收数量推送财务系统。</p>
+          <p>发运仍有未关闭异常时不推送。推送成功后，财务系统入账，衡石不执行过账和结账。</p>
+        </section>
+        <section id="finance-reject" data-section-id="finance-reject">
+          <h2>凭证被拒绝时怎么办</h2>
+          <p>财务系统拒绝凭证时，衡石把拒绝原因显示在对接日志里，业务单据保持未入账。</p>
+          <p>按原因修正供应商、客户或金额后再推送。不要在衡石里手工把状态改成已入账。</p>
+        </section>
+      </article>
+      <nav class="pager" aria-label="前后文">
+        <a href="/kb/pages/shipping.html">上一篇：发运</a>
+        <a href="/kb/pages/faq.html">下一篇：常见问题</a>
+      </nav>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <p>衡石手册。正文写在文章小节中，供人阅读，并作为问答检索的来源。</p>
+  </footer>
+</body>
+</html>

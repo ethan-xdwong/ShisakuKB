@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>产品概览 — 衡石手册</title>
+  <meta name="description" content="衡石负责业务单据和审核，仓储执行交给 WMS，发运交给自有物流或第三方承运商，记账交给财务系统。">
+  <link rel="stylesheet" href="/kb/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "产品概览",
+    "description": "衡石负责业务单据和审核，仓储执行交给 WMS，发运交给自有物流或第三方承运商，记账交给财务系统。",
+    "inLanguage": "zh-CN",
+    "hasPart": [
+      {"@type": "WebPageElement", "name": "衡石负责什么", "cssSelector": "#overview-role"},
+      {"@type": "WebPageElement", "name": "单据先审核再外发", "cssSelector": "#overview-approval-first"},
+      {"@type": "WebPageElement", "name": "外部系统各自负责什么", "cssSelector": "#overview-systems"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/kb/index.html">衡石手册</a>
+    <p class="header-note">ERP 使用说明</p>
+  </header>
+  <div class="page">
+    <nav class="site-nav" aria-label="手册目录">
+      <p class="nav-label">目录</p>
+      <ol class="nav-list">
+        <li><a href="/kb/index.html" aria-current="page">产品概览</a></li>
+        <li><a href="/kb/pages/access.html">登录与权限</a></li>
+        <li><a href="/kb/pages/master-data.html">基础资料</a></li>
+        <li><a href="/kb/pages/approval.html">审核</a></li>
+        <li><a href="/kb/pages/purchase.html">采购</a></li>
+        <li><a href="/kb/pages/sales.html">销售</a></li>
+        <li><a href="/kb/pages/inventory.html">库存</a></li>
+        <li><a href="/kb/pages/wms.html">WMS 对接</a></li>
+        <li><a href="/kb/pages/shipping.html">发运</a></li>
+        <li><a href="/kb/pages/finance.html">财务系统对接</a></li>
+        <li><a href="/kb/pages/faq.html">常见问题</a></li>
+        <li><a href="/kb/pages/troubleshoot.html">故障排查</a></li>
+        <li><a href="/kb/pages/glossary.html">术语表</a></li>
+      </ol>
+    </nav>
+    <main>
+      <article class="article" data-doc-id="overview" data-doc-title="产品概览">
+        <header class="article-head">
+          <p class="breadcrumb">衡石手册 / 产品概览</p>
+          <h1>产品概览</h1>
+          <p class="summary">衡石负责业务单据和审核，仓储执行交给 WMS，发运交给自有物流或第三方承运商，记账交给财务系统。</p>
+          <nav class="onpage" aria-label="本页目录">
+            <ol>
+              <li><a href="#overview-role">衡石负责什么</a></li>
+              <li><a href="#overview-approval-first">单据先审核再外发</a></li>
+              <li><a href="#overview-systems">外部系统各自负责什么</a></li>
+            </ol>
+          </nav>
+        </header>
+        <section id="overview-role" data-section-id="overview-role">
+          <h2>衡石负责什么</h2>
+          <p>衡石是业务 ERP，用来维护主数据、编制业务单据，并在审核通过后把执行指令交给外部系统。</p>
+          <p>采购、销售、调拨和盘点都在衡石中制单。仓库里的收货、上架和拣货不在衡石中操作。车辆调度也不在衡石中操作。</p>
+        </section>
+        <section id="overview-approval-first" data-section-id="overview-approval-first">
+          <h2>单据先审核再外发</h2>
+          <p>在衡石中，业务单据必须先审核通过，才能下发到 WMS、TMS、第三方承运商或财务系统。</p>
+          <p>未提交或被驳回的单据只保存在衡石里。审核通过后，下游系统才看得到对应指令。</p>
+        </section>
+        <section id="overview-systems" data-section-id="overview-systems">
+          <h2>外部系统各自负责什么</h2>
+          <p>WMS 负责按入库单和出库单执行仓储作业，并把实收、实发回传衡石。</p>
+          <p>自有物流使用 TMS 完成下单、收寄和在途跟踪。第三方承运商由承运商完成同样的事。财务系统负责记账，衡石只推送业务凭证，不在衡石内过账或结账。</p>
+        </section>
+      </article>
+      <nav class="pager" aria-label="前后文">
+        <span></span>
+        <a href="/kb/pages/access.html">下一篇：登录与权限</a>
+      </nav>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <p>衡石手册。正文写在文章小节中，供人阅读，并作为问答检索的来源。</p>
+  </footer>
+</body>
+</html>

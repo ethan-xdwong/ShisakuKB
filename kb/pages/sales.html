@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>销售 — 衡石手册</title>
+  <meta name="description" content="销售订单审核通过后向 WMS 下发出库单并进入发运，签收完成后才向财务系统推送应收。">
+  <link rel="stylesheet" href="/kb/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "销售",
+    "description": "销售订单审核通过后向 WMS 下发出库单并进入发运，签收完成后才向财务系统推送应收。",
+    "inLanguage": "zh-CN",
+    "hasPart": [
+      {"@type": "WebPageElement", "name": "销售如何走完", "cssSelector": "#sales-flow"},
+      {"@type": "WebPageElement", "name": "审核销售订单", "cssSelector": "#sales-order"},
+      {"@type": "WebPageElement", "name": "销售订单列表", "cssSelector": "#sales-order-list"},
+      {"@type": "WebPageElement", "name": "销售订单操作列", "cssSelector": "#sales-order-actions"},
+      {"@type": "WebPageElement", "name": "销售订单详情", "cssSelector": "#sales-order-detail"},
+      {"@type": "WebPageElement", "name": "下发出库并进入发运", "cssSelector": "#sales-outbound"},
+      {"@type": "WebPageElement", "name": "签收后推送应收", "cssSelector": "#sales-sign"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/kb/index.html">衡石手册</a>
+    <p class="header-note">ERP 使用说明</p>
+  </header>
+  <div class="page">
+    <nav class="site-nav" aria-label="手册目录">
+      <p class="nav-label">目录</p>
+      <ol class="nav-list">
+        <li><a href="/kb/index.html">产品概览</a></li>
+        <li><a href="/kb/pages/access.html">登录与权限</a></li>
+        <li><a href="/kb/pages/master-data.html">基础资料</a></li>
+        <li><a href="/kb/pages/approval.html">审核</a></li>
+        <li><a href="/kb/pages/purchase.html">采购</a></li>
+        <li><a href="/kb/pages/sales.html" aria-current="page">销售</a></li>
+        <li><a href="/kb/pages/inventory.html">库存</a></li>
+        <li><a href="/kb/pages/wms.html">WMS 对接</a></li>
+        <li><a href="/kb/pages/shipping.html">发运</a></li>
+        <li><a href="/kb/pages/finance.html">财务系统对接</a></li>
+        <li><a href="/kb/pages/faq.html">常见问题</a></li>
+        <li><a href="/kb/pages/troubleshoot.html">故障排查</a></li>
+        <li><a href="/kb/pages/glossary.html">术语表</a></li>
+      </ol>
+    </nav>
+    <main>
+      <article class="article" data-doc-id="sales" data-doc-title="销售">
+        <header class="article-head">
+          <p class="breadcrumb">衡石手册 / 销售</p>
+          <h1>销售</h1>
+          <p class="summary">销售订单审核通过后向 WMS 下发出库单并进入发运，签收完成后才向财务系统推送应收。</p>
+          <nav class="onpage" aria-label="本页目录">
+            <ol>
+              <li><a href="#sales-flow">销售如何走完</a></li>
+              <li><a href="#sales-order">审核销售订单</a></li>
+              <li><a href="#sales-order-list">销售订单列表</a></li>
+              <li><a href="#sales-order-actions">销售订单操作列</a></li>
+              <li><a href="#sales-order-detail">销售订单详情</a></li>
+              <li><a href="#sales-outbound">下发出库并进入发运</a></li>
+              <li><a href="#sales-sign">签收后推送应收</a></li>
+            </ol>
+          </nav>
+        </header>
+        <section id="sales-flow" data-section-id="sales-flow">
+          <h2>销售如何走完</h2>
+          <p>在衡石中，销售订单审核通过后才出库和发运，签收完成且没有未关闭异常时才推送应收。</p>
+          <pre class="mermaid">
+flowchart TD
+  orderNode["销售订单审核通过"] --> outboundNode["向 WMS 下发出库单"]
+  outboundNode --> shipNode["进入发运"]
+  shipNode --> signNode["签收完成"]
+  signNode --> arNode["向财务系统推送应收"]
+          </pre>
+          <ol>
+            <li>销售订单审核通过。</li>
+            <li>向 WMS 下发出库单。</li>
+            <li>出库完成后进入发运。</li>
+            <li>签收完成后向财务系统推送应收。</li>
+          </ol>
+        </section>
+        <section id="sales-order" data-section-id="sales-order">
+          <h2>审核销售订单</h2>
+          <p>在衡石中，销售订单审核核对客户、物料、数量和收货地址，审核通过前不能下发出库单。</p>
+          <p>地址不完整的销售订单可以被驳回。制单人补齐地址后重新提交。</p>
+        </section>
+        <section id="sales-order-list" data-section-id="sales-order-list">
+          <h2>销售订单列表</h2>
+          <p>在衡石中，销售订单列表用来按单号、客户和状态查找销售订单，并看出库进度和地址是否完整。</p>
+          <table>
+            <caption>销售订单列表的查询条件和字段</caption>
+            <thead>
+              <tr>
+                <th scope="col">项目</th>
+                <th scope="col">内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">查询条件</th>
+                <td>单号、客户、状态</td>
+              </tr>
+              <tr>
+                <th scope="row">列表字段</th>
+                <td>单号、客户、状态、地址是否完整、出库进度</td>
+              </tr>
+              <tr>
+                <th scope="row">状态</th>
+                <td>草稿、待审、已驳回、已审核、部分出库、发运中、已签收</td>
+              </tr>
+            </tbody>
+          </table>
+          <ol>
+            <li>输入单号、客户或状态后查询。</li>
+            <li>在结果中核对地址是否完整，以及出库进度。</li>
+          </ol>
+        </section>
+        <section id="sales-order-actions" data-section-id="sales-order-actions">
+          <h2>销售订单操作列</h2>
+          <p>在衡石中，销售订单操作列按单据状态给出按钮，详情在任何可见状态下都可以打开。</p>
+          <p>编辑和提交审核只出现在草稿和已驳回。地址不完整时不能在列表里直接改，要驳回后由制单人修改再提交。</p>
+          <table>
+            <caption>销售订单操作列按状态可用的按钮</caption>
+            <thead>
+              <tr>
+                <th scope="col">按钮</th>
+                <th scope="col">可用状态</th>
+                <th scope="col">结果</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">详情</th>
+                <td>全部可见状态</td>
+                <td>打开这一张销售订单</td>
+              </tr>
+              <tr>
+                <th scope="row">编辑</th>
+                <td>草稿、已驳回</td>
+                <td>修改客户、物料、数量或地址</td>
+              </tr>
+              <tr>
+                <th scope="row">提交审核</th>
+                <td>草稿、已驳回</td>
+                <td>提交后进入待审</td>
+              </tr>
+            </tbody>
+          </table>
+          <ol>
+            <li>在操作列点击详情，查看这一张销售订单。</li>
+            <li>只有草稿或已驳回时，才能编辑并提交审核。</li>
+            <li>地址不完整时先驳回，由制单人补齐后再提交，不在列表里直接改地址。</li>
+          </ol>
+        </section>
+        <section id="sales-order-detail" data-section-id="sales-order-detail">
+          <h2>销售订单详情</h2>
+          <p>在衡石中，销售订单详情展示客户、物料、数量、收货地址，以及出库单、发运和签收结果。</p>
+          <p>仍有未关闭异常时，销售订单详情不提供签收，也不显示已推应收。已审核后，数量和地址只读。</p>
+          <table>
+            <caption>销售订单详情中的内容</caption>
+            <thead>
+              <tr>
+                <th scope="col">区域</th>
+                <th scope="col">内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">表头</th>
+                <td>客户、状态、收货地址</td>
+              </tr>
+              <tr>
+                <th scope="row">明细</th>
+                <td>物料、数量、已出库数量</td>
+              </tr>
+              <tr>
+                <th scope="row">下游</th>
+                <td>出库单、发运进度、签收结果、应收是否已推送</td>
+              </tr>
+            </tbody>
+          </table>
+          <ol>
+            <li>从操作列进入销售订单详情，核对客户、物料、数量和收货地址。</li>
+            <li>查看出库单、发运进度和签收结果。</li>
+            <li>异常未关闭时不能签收，页面也不把应收显示为已推送。</li>
+          </ol>
+        </section>
+        <section id="sales-outbound" data-section-id="sales-outbound">
+          <h2>下发出库并进入发运</h2>
+          <p>在衡石中，销售订单审核通过后向 WMS 下发出库单，WMS 回传实发数量后，衡石才允许进入发运。</p>
+          <p>实发数量小于订单数量时，订单保持部分出库。未出库的数量不能提前发运。</p>
+        </section>
+        <section id="sales-sign" data-section-id="sales-sign">
+          <h2>签收后推送应收</h2>
+          <p>在衡石中，发运签收完成后才向财务系统推送应收，未签收的销售订单不产生应收。</p>
+          <p>若发运侧仍有未关闭异常，应收不会推送。异常关闭并完成签收后，再按签收数量推送。</p>
+        </section>
+      </article>
+      <nav class="pager" aria-label="前后文">
+        <a href="/kb/pages/purchase.html">上一篇：采购</a>
+        <a href="/kb/pages/inventory.html">下一篇：库存</a>
+      </nav>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <p>衡石手册。正文写在文章小节中，供人阅读，并作为问答检索的来源。</p>
+  </footer>
+  <script src="/kb/js/mermaid.min.js"></script>
+  <script src="/kb/js/render-mermaid.js"></script>
+</body>
+</html>

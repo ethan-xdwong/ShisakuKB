@@ -1,0 +1,254 @@
+:root {
+  color-scheme: light;
+  --bg: #f3f0e8;
+  --paper: #fffdf8;
+  --text: #1c1915;
+  --muted: #5e584e;
+  --line: #e3daca;
+  --accent: #1d6b48;
+  --accent-soft: #e7f3ec;
+  --nav: 15.5rem;
+  --content: 42rem;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.site-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.brand {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.header-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.site-header,
+.page,
+.site-nav,
+.article,
+.pager {
+  box-sizing: border-box;
+}
+
+.page {
+  display: grid;
+  grid-template-columns: var(--nav) minmax(0, 1fr);
+  gap: 1.5rem;
+  width: min(72rem, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.25rem 0 3rem;
+}
+
+.site-nav {
+  position: sticky;
+  top: 1rem;
+  align-self: start;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+}
+
+.nav-label {
+  margin: 0 0 0.45rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+}
+
+.nav-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-list a {
+  display: block;
+  padding: 0.28rem 0.4rem;
+  border-radius: 4px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav-list a:hover,
+.nav-list a[aria-current="page"] {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+main {
+  min-width: 0;
+}
+
+.article {
+  padding: 1.4rem 1.6rem 1.8rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+}
+
+.breadcrumb {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.article h1,
+.article h2 {
+  font-family: "Iowan Old Style", "Palatino Linotype", "Songti SC", "Noto Serif SC", serif;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+}
+
+.article h1 {
+  margin: 0.25rem 0 0.6rem;
+  font-size: 2rem;
+}
+
+.summary {
+  margin: 0;
+  color: var(--muted);
+}
+
+.onpage {
+  margin-top: 1rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--line);
+}
+
+.onpage ol {
+  margin: 0.35rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.article section {
+  margin-top: 1.6rem;
+  padding: 0.2rem 0.2rem 0.2rem 0.15rem;
+  scroll-margin-top: 1rem;
+}
+
+.article section:target {
+  background: var(--accent-soft);
+  outline: 1px solid #cfe3d6;
+  border-radius: 6px;
+}
+
+.article h2 {
+  margin: 0 0 0.45rem;
+  font-size: 1.35rem;
+}
+
+.article p,
+.article li {
+  margin: 0.45rem 0;
+}
+
+.article ol,
+.article ul {
+  margin: 0.4rem 0 0.6rem;
+  padding-left: 1.35rem;
+}
+
+.alias {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.article table {
+  width: 100%;
+  margin: 0.8rem 0 1rem;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.article caption {
+  margin-bottom: 0.4rem;
+  caption-side: top;
+  color: var(--muted);
+  font-size: 0.92rem;
+  text-align: left;
+}
+
+.article th,
+.article td {
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.article th {
+  background: #f7f5ef;
+  font-weight: 600;
+}
+
+.mermaid {
+  margin: 0.8rem 0 1rem;
+  padding: 0.75rem;
+  overflow-x: auto;
+  border-radius: 6px;
+  background: #f7f5ef;
+  white-space: pre-wrap;
+}
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.9rem;
+  font-size: 0.95rem;
+}
+
+.site-footer {
+  padding: 0 1.5rem 2rem;
+  color: var(--muted);
+  font-size: 0.86rem;
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+
+  .site-nav {
+    position: static;
+  }
+}

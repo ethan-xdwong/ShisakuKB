@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>常见问题 — 衡石手册</title>
+  <meta name="description" content="回答价格未过审能否下单、未到齐能否关闭采购订单、异常未关闭能否确认应收，以及两种承运方式能否混用。">
+  <link rel="stylesheet" href="/kb/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "常见问题",
+    "description": "回答价格未过审能否下单、未到齐能否关闭采购订单、异常未关闭能否确认应收，以及两种承运方式能否混用。",
+    "inLanguage": "zh-CN",
+    "hasPart": [
+      {"@type": "WebPageElement", "name": "价格未过审能否下单", "cssSelector": "#faq-price"},
+      {"@type": "WebPageElement", "name": "未到齐能否关闭采购订单", "cssSelector": "#faq-partial"},
+      {"@type": "WebPageElement", "name": "异常未关闭能否确认应收", "cssSelector": "#faq-exception"},
+      {"@type": "WebPageElement", "name": "两种承运方式能否混用", "cssSelector": "#faq-mix"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/kb/index.html">衡石手册</a>
+    <p class="header-note">ERP 使用说明</p>
+  </header>
+  <div class="page">
+    <nav class="site-nav" aria-label="手册目录">
+      <p class="nav-label">目录</p>
+      <ol class="nav-list">
+        <li><a href="/kb/index.html">产品概览</a></li>
+        <li><a href="/kb/pages/access.html">登录与权限</a></li>
+        <li><a href="/kb/pages/master-data.html">基础资料</a></li>
+        <li><a href="/kb/pages/approval.html">审核</a></li>
+        <li><a href="/kb/pages/purchase.html">采购</a></li>
+        <li><a href="/kb/pages/sales.html">销售</a></li>
+        <li><a href="/kb/pages/inventory.html">库存</a></li>
+        <li><a href="/kb/pages/wms.html">WMS 对接</a></li>
+        <li><a href="/kb/pages/shipping.html">发运</a></li>
+        <li><a href="/kb/pages/finance.html">财务系统对接</a></li>
+        <li><a href="/kb/pages/faq.html" aria-current="page">常见问题</a></li>
+        <li><a href="/kb/pages/troubleshoot.html">故障排查</a></li>
+        <li><a href="/kb/pages/glossary.html">术语表</a></li>
+      </ol>
+    </nav>
+    <main>
+      <article class="article" data-doc-id="faq" data-doc-title="常见问题">
+        <header class="article-head">
+          <p class="breadcrumb">衡石手册 / 常见问题</p>
+          <h1>常见问题</h1>
+          <p class="summary">回答价格未过审能否下单、未到齐能否关闭采购订单、异常未关闭能否确认应收，以及两种承运方式能否混用。</p>
+          <nav class="onpage" aria-label="本页目录">
+            <ol>
+              <li><a href="#faq-price">价格未过审能否下单</a></li>
+              <li><a href="#faq-partial">未到齐能否关闭采购订单</a></li>
+              <li><a href="#faq-exception">异常未关闭能否确认应收</a></li>
+              <li><a href="#faq-mix">两种承运方式能否混用</a></li>
+            </ol>
+          </nav>
+        </header>
+        <section id="faq-price" data-section-id="faq-price">
+          <h2>价格未过审能否下单</h2>
+          <p>在衡石中，价格未审核通过时不能保存或提交采购订单，因为订单取不到可用价格。</p>
+          <p>先完成价格审核，再编写采购订单。不要把未过审的价格写进备注代替正式价格。</p>
+        </section>
+        <section id="faq-partial" data-section-id="faq-partial">
+          <h2>未到齐能否关闭采购订单</h2>
+          <p>在衡石中，采购订单还有未收数量时不能整单关闭，状态保持部分收货。</p>
+          <p>剩余数量取消时，要做关闭剩余的审核，不能把未到货的数量写成已收。</p>
+        </section>
+        <section id="faq-exception" data-section-id="faq-exception">
+          <h2>异常未关闭能否确认应收</h2>
+          <p>在衡石中，发运异常还没关闭时不能确认应收，也不能向财务系统推送。</p>
+          <p>先按承运方式处理异常并关闭，再完成签收。签收之后才会推送应收。</p>
+        </section>
+        <section id="faq-mix" data-section-id="faq-mix">
+          <h2>两种承运方式能否混用</h2>
+          <p>在衡石中，同一张运单只能选择自有物流或第三方承运商中的一种。</p>
+          <p>一批货需要两种方式时，拆成两张发运单，分别下单和跟踪。</p>
+        </section>
+      </article>
+      <nav class="pager" aria-label="前后文">
+        <a href="/kb/pages/finance.html">上一篇：财务系统对接</a>
+        <a href="/kb/pages/troubleshoot.html">下一篇：故障排查</a>
+      </nav>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <p>衡石手册。正文写在文章小节中，供人阅读，并作为问答检索的来源。</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>采购 — 衡石手册</title>
+  <meta name="description" content="采购要先完成供应商引入、采购目录和价格审核，订单审核通过后才能分批送货，并按每批实收推送应付。">
+  <link rel="stylesheet" href="/kb/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "采购",
+    "description": "采购要先完成供应商引入、采购目录和价格审核，订单审核通过后才能分批送货，并按每批实收推送应付。",
+    "inLanguage": "zh-CN",
+    "hasPart": [
+      {"@type": "WebPageElement", "name": "采购如何走完", "cssSelector": "#purchase-flow"},
+      {"@type": "WebPageElement", "name": "供应商引入", "cssSelector": "#purchase-vendor"},
+      {"@type": "WebPageElement", "name": "采购目录审核", "cssSelector": "#purchase-catalog"},
+      {"@type": "WebPageElement", "name": "价格审核", "cssSelector": "#purchase-price"},
+      {"@type": "WebPageElement", "name": "请购与采购订单", "cssSelector": "#purchase-order"},
+      {"@type": "WebPageElement", "name": "采购订单列表", "cssSelector": "#purchase-order-list"},
+      {"@type": "WebPageElement", "name": "采购订单操作列", "cssSelector": "#purchase-order-actions"},
+      {"@type": "WebPageElement", "name": "采购订单详情", "cssSelector": "#purchase-order-detail"},
+      {"@type": "WebPageElement", "name": "多批次发货", "cssSelector": "#purchase-batch"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/kb/index.html">衡石手册</a>
+    <p class="header-note">ERP 使用说明</p>
+  </header>
+  <div class="page">
+    <nav class="site-nav" aria-label="手册目录">
+      <p class="nav-label">目录</p>
+      <ol class="nav-list">
+        <li><a href="/kb/index.html">产品概览</a></li>
+        <li><a href="/kb/pages/access.html">登录与权限</a></li>
+        <li><a href="/kb/pages/master-data.html">基础资料</a></li>
+        <li><a href="/kb/pages/approval.html">审核</a></li>
+        <li><a href="/kb/pages/purchase.html" aria-current="page">采购</a></li>
+        <li><a href="/kb/pages/sales.html">销售</a></li>
+        <li><a href="/kb/pages/inventory.html">库存</a></li>
+        <li><a href="/kb/pages/wms.html">WMS 对接</a></li>
+        <li><a href="/kb/pages/shipping.html">发运</a></li>
+        <li><a href="/kb/pages/finance.html">财务系统对接</a></li>
+        <li><a href="/kb/pages/faq.html">常见问题</a></li>
+        <li><a href="/kb/pages/troubleshoot.html">故障排查</a></li>
+        <li><a href="/kb/pages/glossary.html">术语表</a></li>
+      </ol>
+    </nav>
+    <main>
+      <article class="article" data-doc-id="purchase" data-doc-title="采购">
+        <header class="article-head">
+          <p class="breadcrumb">衡石手册 / 采购</p>
+          <h1>采购</h1>
+          <p class="summary">采购要先完成供应商引入、采购目录和价格审核，订单审核通过后才能分批送货，并按每批实收推送应付。</p>
+          <nav class="onpage" aria-label="本页目录">
+            <ol>
+              <li><a href="#purchase-flow">采购如何走完</a></li>
+              <li><a href="#purchase-vendor">供应商引入</a></li>
+              <li><a href="#purchase-catalog">采购目录审核</a></li>
+              <li><a href="#purchase-price">价格审核</a></li>
+              <li><a href="#purchase-order">请购与采购订单</a></li>
+              <li><a href="#purchase-order-list">采购订单列表</a></li>
+              <li><a href="#purchase-order-actions">采购订单操作列</a></li>
+              <li><a href="#purchase-order-detail">采购订单详情</a></li>
+              <li><a href="#purchase-batch">多批次发货</a></li>
+            </ol>
+          </nav>
+        </header>
+        <section id="purchase-flow" data-section-id="purchase-flow">
+          <h2>采购如何走完</h2>
+          <p>在衡石中，采购从合格供应商开始，经目录和价格审核后下采购订单，再按批次入库并推送应付。</p>
+          <pre class="mermaid">
+flowchart TD
+  vendorNode["供应商引入审核通过"] --> catalogNode["采购目录审核通过"]
+  catalogNode --> priceNode["价格审核通过"]
+  priceNode --> orderNode["采购订单审核通过"]
+  orderNode --> batchNode["按批次下发入库单"]
+  batchNode --> wmsNode["WMS 回传该批实收"]
+  wmsNode --> apNode["按该批实收推送应付"]
+          </pre>
+          <ol>
+            <li>供应商引入审核通过后，才能维护采购目录。</li>
+            <li>采购目录和价格都审核通过后，才能保存采购订单。</li>
+            <li>采购订单审核通过后，按批次下发入库单。</li>
+            <li>每一批实收回传后，按该批数量推送应付。</li>
+          </ol>
+        </section>
+        <section id="purchase-vendor" data-section-id="purchase-vendor">
+          <h2>供应商引入</h2>
+          <p>在衡石中，供应商引入是提交资质并指定可供区域，审核通过后才成为合格供应商。</p>
+          <p>未通过引入的供应商不能进入采购目录，也不能被采购订单引用。资质过期后需要重新提交引入。</p>
+        </section>
+        <section id="purchase-catalog" data-section-id="purchase-catalog">
+          <h2>采购目录审核</h2>
+          <p>在衡石中，采购目录是合格供应商可以供应的物料范围，目录未审核通过时不能对该物料下采购订单。</p>
+          <p>同一供应商可以分多次追加物料。新追加的物料在目录审核通过前，采购订单里选不到。</p>
+          <p class="alias">也可称为供货范围。</p>
+        </section>
+        <section id="purchase-price" data-section-id="purchase-price">
+          <h2>价格审核</h2>
+          <p>在衡石中，阶梯价是同一区域内按采购数量分档的价格，必须和区域一起审核后才能被采购订单取用。</p>
+          <p>同一物料在不同区域可以有不同价格。同一区域内，采购数量越大，适用的阶梯价越低；数量跨入更高一档时，整行按该档阶梯价计价。价格未审核通过时，采购订单取不到阶梯价，也不能提交。</p>
+          <p>修改阶梯价后要重新审核。审核完成前，新采购订单仍使用上一版已通过的阶梯价。</p>
+          <ol>
+            <li>选择区域和数量档，填写阶梯价。</li>
+            <li>提交阶梯价审核，通过前采购订单不能取用这版价格。</li>
+          </ol>
+          <p class="alias">也可称为数量档价格。</p>
+        </section>
+        <section id="purchase-order" data-section-id="purchase-order">
+          <h2>请购与采购订单</h2>
+          <p>在衡石中，请购审核通过后才能转成采购订单，采购订单审核通过后才能通知供应商送货。</p>
+          <p>采购订单只能选择已引入的供应商、已审核的采购目录物料，以及已审核的价格。三者缺一不能提交。</p>
+          <p class="alias">也可称为 PO。</p>
+        </section>
+        <section id="purchase-order-list" data-section-id="purchase-order-list">
+          <h2>采购订单列表</h2>
+          <p>在衡石中，采购订单列表用来按单号、供应商、状态和单据日期查找采购订单。</p>
+          <p>列表同时给出订单数量、已收数量和未收数量。状态分为草稿、待审、已驳回、已审核、部分收货和收货完成。</p>
+          <table>
+            <caption>采购订单列表的查询条件和字段</caption>
+            <thead>
+              <tr>
+                <th scope="col">项目</th>
+                <th scope="col">内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">查询条件</th>
+                <td>单号、供应商、状态、单据日期</td>
+              </tr>
+              <tr>
+                <th scope="row">列表字段</th>
+                <td>单号、供应商、状态、订单数量、已收数量、未收数量</td>
+              </tr>
+              <tr>
+                <th scope="row">状态</th>
+                <td>草稿、待审、已驳回、已审核、部分收货、收货完成</td>
+              </tr>
+            </tbody>
+          </table>
+          <ol>
+            <li>输入单号、供应商、状态或单据日期后查询。</li>
+            <li>在结果中核对订单数量、已收数量和未收数量。</li>
+          </ol>
+        </section>
+        <section id="purchase-order-actions" data-section-id="purchase-order-actions">
+          <h2>采购订单操作列</h2>
+          <p>在衡石中，采购订单操作列按单据状态给出按钮，详情在任何可见状态下都可以打开。</p>
+          <p>编辑和提交审核只出现在草稿和已驳回。删除只出现在从未提交的草稿。未收完的订单不提供整单关闭。</p>
+          <table>
+            <caption>采购订单操作列按状态可用的按钮</caption>
+            <thead>
+              <tr>
+                <th scope="col">按钮</th>
+                <th scope="col">可用状态</th>
+                <th scope="col">结果</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">详情</th>
+                <td>全部可见状态</td>
+                <td>打开这一张采购订单</td>
+              </tr>
+              <tr>
+                <th scope="row">编辑</th>
+                <td>草稿、已驳回</td>
+                <td>修改供应商、物料或数量</td>
+              </tr>
+              <tr>
+                <th scope="row">提交审核</th>
+                <td>草稿、已驳回</td>
+                <td>提交后进入待审</td>
+              </tr>
+              <tr>
+                <th scope="row">删除</th>
+                <td>从未提交的草稿</td>
+                <td>已提交过的单据不能删除</td>
+              </tr>
+            </tbody>
+          </table>
+          <ol>
+            <li>在操作列点击详情，查看这一张采购订单。</li>
+            <li>只有草稿或已驳回时，才能编辑并提交审核。</li>
+            <li>只有从未提交的草稿才能删除，未收完时不能整单关闭。</li>
+          </ol>
+        </section>
+        <section id="purchase-order-detail" data-section-id="purchase-order-detail">
+          <h2>采购订单详情</h2>
+          <p>在衡石中，采购订单详情展示供应商、区域、明细数量和阶梯价，以及每一批入库单和应付是否已推送。</p>
+          <p>已审核后，明细里的数量和价格只读，不能在采购订单详情里修改。</p>
+          <table>
+            <caption>采购订单详情中的内容</caption>
+            <thead>
+              <tr>
+                <th scope="col">区域</th>
+                <th scope="col">内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">表头</th>
+                <td>供应商、区域、状态</td>
+              </tr>
+              <tr>
+                <th scope="row">明细</th>
+                <td>物料、数量、阶梯价、已收数量</td>
+              </tr>
+              <tr>
+                <th scope="row">下游</th>
+                <td>每一批入库单，以及该批应付是否已推送</td>
+              </tr>
+            </tbody>
+          </table>
+          <ol>
+            <li>从操作列进入采购订单详情，核对供应商、区域和明细。</li>
+            <li>按批次查看入库单，以及该批应付是否已推送。</li>
+            <li>已审核的数量和阶梯价只读，不在采购订单详情里改数。</li>
+          </ol>
+        </section>
+        <section id="purchase-batch" data-section-id="purchase-batch">
+          <h2>多批次发货</h2>
+          <p>在衡石中，分批发货是指一张采购订单拆成多批送达，每一批单独生成入库单下发 WMS。</p>
+          <p>WMS 回传该批实收数量后，订单变为部分收货，不因为还有未到批次而整单关闭。财务系统按每一批实收推应付。实收数量不能超过该订单的剩余未收数量。</p>
+          <p class="alias">也可称为分批送货。</p>
+        </section>
+      </article>
+      <nav class="pager" aria-label="前后文">
+        <a href="/kb/pages/approval.html">上一篇：审核</a>
+        <a href="/kb/pages/sales.html">下一篇：销售</a>
+      </nav>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <p>衡石手册。正文写在文章小节中，供人阅读，并作为问答检索的来源。</p>
+  </footer>
+  <script src="/kb/js/mermaid.min.js"></script>
+  <script src="/kb/js/render-mermaid.js"></script>
+</body>
+</html>

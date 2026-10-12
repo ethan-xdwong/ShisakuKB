@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>衡石手册问答</title>
+  <link rel="stylesheet" href="/static/chat.css?v=split">
+</head>
+<body>
+  <div class="shell">
+    <section class="viewer-pane" aria-label="手册">
+      <header class="pane-bar">
+        <h1>衡石手册</h1>
+        <a href="/kb/index.html" target="_blank" rel="noopener">单独打开</a>
+      </header>
+      <iframe id="kb-viewer" title="衡石手册" src="/kb/index.html"></iframe>
+    </section>
+    <div id="pane-splitter" class="splitter" role="separator" aria-orientation="vertical" aria-label="调整手册与问答宽度" tabindex="0"></div>
+    <section class="chat-pane" aria-label="问答">
+      <header class="pane-bar">
+        <h2>问答</h2>
+      </header>
+      <p class="hint">回答只依据手册小节。来源是段落链接，点击后在左侧打开。</p>
+      <div id="messages" class="messages" aria-live="polite"></div>
+      <form id="ask-form" class="composer">
+        <label class="question-label" for="question">问题</label>
+        <textarea id="question" name="question" rows="3" maxlength="500" required placeholder="例如：物流异常如何处理"></textarea>
+        <div class="composer-bar">
+          <label class="check" for="retrieve-only">
+            <input id="retrieve-only" type="checkbox">
+            只看检索
+          </label>
+          <button id="submit-button" type="submit">提问</button>
+        </div>
+      </form>
+    </section>
+  </div>
+  <script src="/static/chat.js?v=split"></script>
+</body>
+</html>

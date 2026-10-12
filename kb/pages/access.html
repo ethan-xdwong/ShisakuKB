@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录与权限 — 衡石手册</title>
+  <meta name="description" content="说明如何登录衡石、选择公司与账套，以及制单和审核分别由谁来做。">
+  <link rel="stylesheet" href="/kb/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "登录与权限",
+    "description": "说明如何登录衡石、选择公司与账套，以及制单和审核分别由谁来做。",
+    "inLanguage": "zh-CN",
+    "hasPart": [
+      {"@type": "WebPageElement", "name": "登录衡石", "cssSelector": "#access-login"},
+      {"@type": "WebPageElement", "name": "选择公司与账套", "cssSelector": "#access-book"},
+      {"@type": "WebPageElement", "name": "制单与审核权限", "cssSelector": "#access-role"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/kb/index.html">衡石手册</a>
+    <p class="header-note">ERP 使用说明</p>
+  </header>
+  <div class="page">
+    <nav class="site-nav" aria-label="手册目录">
+      <p class="nav-label">目录</p>
+      <ol class="nav-list">
+        <li><a href="/kb/index.html">产品概览</a></li>
+        <li><a href="/kb/pages/access.html" aria-current="page">登录与权限</a></li>
+        <li><a href="/kb/pages/master-data.html">基础资料</a></li>
+        <li><a href="/kb/pages/approval.html">审核</a></li>
+        <li><a href="/kb/pages/purchase.html">采购</a></li>
+        <li><a href="/kb/pages/sales.html">销售</a></li>
+        <li><a href="/kb/pages/inventory.html">库存</a></li>
+        <li><a href="/kb/pages/wms.html">WMS 对接</a></li>
+        <li><a href="/kb/pages/shipping.html">发运</a></li>
+        <li><a href="/kb/pages/finance.html">财务系统对接</a></li>
+        <li><a href="/kb/pages/faq.html">常见问题</a></li>
+        <li><a href="/kb/pages/troubleshoot.html">故障排查</a></li>
+        <li><a href="/kb/pages/glossary.html">术语表</a></li>
+      </ol>
+    </nav>
+    <main>
+      <article class="article" data-doc-id="access" data-doc-title="登录与权限">
+        <header class="article-head">
+          <p class="breadcrumb">衡石手册 / 登录与权限</p>
+          <h1>登录与权限</h1>
+          <p class="summary">说明如何登录衡石、选择公司与账套，以及制单和审核分别由谁来做。</p>
+          <nav class="onpage" aria-label="本页目录">
+            <ol>
+              <li><a href="#access-login">登录衡石</a></li>
+              <li><a href="#access-book">选择公司与账套</a></li>
+              <li><a href="#access-role">制单与审核权限</a></li>
+            </ol>
+          </nav>
+        </header>
+        <section id="access-login" data-section-id="access-login">
+          <h2>登录衡石</h2>
+          <p>使用衡石前，用已开通的账号和密码登录，登录后才能看到被授权的公司。</p>
+          <ol>
+            <li>打开登录页，输入账号和密码。</li>
+            <li>登录成功后进入公司选择页。</li>
+            <li>连续 5 次密码错误会暂停登录 15 分钟。</li>
+          </ol>
+        </section>
+        <section id="access-book" data-section-id="access-book">
+          <h2>选择公司与账套</h2>
+          <p>在衡石中，公司和账套决定单据记在哪一套业务数据下，切换后只能看见该账套的单据。</p>
+          <p>制单、审核和推送外部系统都针对当前账套。选错账套时，先退出单据再切换，不要在错误账套里提交审核。</p>
+        </section>
+        <section id="access-role" data-section-id="access-role">
+          <h2>制单与审核权限</h2>
+          <p>衡石把制单和审核分成两种权限，同一个人可以只有其中一种。</p>
+          <p>制单人可以保存和提交单据，不能把自己提交的单据审核通过。审核人可以审核被分配给自己的单据类型。没有审核权限的人看不到审核按钮。</p>
+        </section>
+      </article>
+      <nav class="pager" aria-label="前后文">
+        <a href="/kb/index.html">上一篇：产品概览</a>
+        <a href="/kb/pages/master-data.html">下一篇：基础资料</a>
+      </nav>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <p>衡石手册。正文写在文章小节中，供人阅读，并作为问答检索的来源。</p>
+  </footer>
+</body>
+</html>

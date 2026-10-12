@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>库存 — 衡石手册</title>
+  <meta name="description" content="衡石保留现存量。调拨和盘点都要审核，审核通过后由 WMS 执行并回传结果。">
+  <link rel="stylesheet" href="/kb/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "库存",
+    "description": "衡石保留现存量。调拨和盘点都要审核，审核通过后由 WMS 执行并回传结果。",
+    "inLanguage": "zh-CN",
+    "hasPart": [
+      {"@type": "WebPageElement", "name": "查看现存量", "cssSelector": "#inventory-onhand"},
+      {"@type": "WebPageElement", "name": "调拨审核", "cssSelector": "#inventory-transfer"},
+      {"@type": "WebPageElement", "name": "调拨列表", "cssSelector": "#transfer-list"},
+      {"@type": "WebPageElement", "name": "调拨操作列", "cssSelector": "#transfer-actions"},
+      {"@type": "WebPageElement", "name": "调拨详情", "cssSelector": "#transfer-detail"},
+      {"@type": "WebPageElement", "name": "盘点审核", "cssSelector": "#inventory-count"},
+      {"@type": "WebPageElement", "name": "盘点列表", "cssSelector": "#count-list"},
+      {"@type": "WebPageElement", "name": "盘点操作列", "cssSelector": "#count-actions"},
+      {"@type": "WebPageElement", "name": "盘点详情", "cssSelector": "#count-detail"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/kb/index.html">衡石手册</a>
+    <p class="header-note">ERP 使用说明</p>
+  </header>
+  <div class="page">
+    <nav class="site-nav" aria-label="手册目录">
+      <p class="nav-label">目录</p>
+      <ol class="nav-list">
+        <li><a href="/kb/index.html">产品概览</a></li>
+        <li><a href="/kb/pages/access.html">登录与权限</a></li>
+        <li><a href="/kb/pages/master-data.html">基础资料</a></li>
+        <li><a href="/kb/pages/approval.html">审核</a></li>
+        <li><a href="/kb/pages/purchase.html">采购</a></li>
+        <li><a href="/kb/pages/sales.html">销售</a></li>
+        <li><a href="/kb/pages/inventory.html" aria-current="page">库存</a></li>
+        <li><a href="/kb/pages/wms.html">WMS 对接</a></li>
+        <li><a href="/kb/pages/shipping.html">发运</a></li>
+        <li><a href="/kb/pages/finance.html">财务系统对接</a></li>
+        <li><a href="/kb/pages/faq.html">常见问题</a></li>
+        <li><a href="/kb/pages/troubleshoot.html">故障排查</a></li>
+        <li><a href="/kb/pages/glossary.html">术语表</a></li>
+      </ol>
+    </nav>
+    <main>
+      <article class="article" data-doc-id="inventory" data-doc-title="库存">
+        <header class="article-head">
+          <p class="breadcrumb">衡石手册 / 库存</p>
+          <h1>库存</h1>
+          <p class="summary">衡石保留现存量。调拨和盘点都要审核，审核通过后由 WMS 执行并回传结果。</p>
+          <nav class="onpage" aria-label="本页目录">
+            <ol>
+              <li><a href="#inventory-onhand">查看现存量</a></li>
+              <li><a href="#inventory-transfer">调拨审核</a></li>
+              <li><a href="#transfer-list">调拨列表</a></li>
+              <li><a href="#transfer-actions">调拨操作列</a></li>
+              <li><a href="#transfer-detail">调拨详情</a></li>
+              <li><a href="#inventory-count">盘点审核</a></li>
+              <li><a href="#count-list">盘点列表</a></li>
+              <li><a href="#count-actions">盘点操作列</a></li>
+              <li><a href="#count-detail">盘点详情</a></li>
+            </ol>
+          </nav>
+        </header>
+        <section id="inventory-onhand" data-section-id="inventory-onhand">
+          <h2>查看现存量</h2>
+          <p>在衡石中，现存量是按仓库和物料汇总的逻辑数量，来自 WMS 回传，不在衡石里直接改数。</p>
+          <p>页面按仓库、物料查询。数量与仓库实物不一致时，走盘点，不要手工覆盖现存量。</p>
+        </section>
+        <section id="inventory-transfer" data-section-id="inventory-transfer">
+          <h2>调拨审核</h2>
+          <p>在衡石中，调拨审核通过后才下发 WMS，由调出仓出库、调入仓入库。</p>
+          <p>审核前可以修改调出仓库、调入仓库和数量。审核通过后如需变更，先驳回或作废未执行的指令，再重新提交。</p>
+        </section>
+        <section id="transfer-list" data-section-id="transfer-list">
+          <h2>调拨列表</h2>
+          <p>在衡石中，调拨列表用来按单号、调出仓、调入仓和状态查找调拨单。</p>
+          <table>
+            <caption>调拨列表的查询条件和字段</caption>
+            <thead>
+              <tr>
+                <th scope="col">项目</th>
+                <th scope="col">内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">查询条件</th>
+                <td>单号、调出仓、调入仓、状态</td>
+              </tr>
+              <tr>
+                <th scope="row">列表字段</th>
+                <td>单号、调出仓、调入仓、状态、数量</td>
+              </tr>
+              <tr>
+                <th scope="row">状态</th>
+                <td>草稿、待审、已驳回、已审核、执行中、已完成</td>
+              </tr>
+            </tbody>
+          </table>
+          <ol>
+            <li>输入单号、调出仓、调入仓或状态后查询。</li>
+            <li>在结果中核对调出仓、调入仓和数量。</li>
+          </ol>
+        </section>
+        <section id="transfer-actions" data-section-id="transfer-actions">
+          <h2>调拨操作列</h2>
+          <p>在衡石中，调拨操作列按单据状态给出按钮，详情在任何可见状态下都可以打开。</p>
+          <p>编辑和提交审核只出现在草稿和已驳回。已下发且尚未执行的指令，只能作废后重新提交，不能在列表里改数量。</p>
+          <table>
+            <caption>调拨操作列按状态可用的按钮</caption>
+            <thead>
+              <tr>
+                <th scope="col">按钮</th>
+                <th scope="col">可用状态</th>
+                <th scope="col">结果</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">详情</th>
+                <td>全部可见状态</td>
+                <td>打开这一张调拨单</td>
+              </tr>
+              <tr>
+                <th scope="row">编辑</th>
+                <td>草稿、已驳回</td>
+                <td>修改调出仓、调入仓或数量</td>
+              </tr>
+              <tr>
+                <th scope="row">提交审核</th>
+                <td>草稿、已驳回</td>
+                <td>提交后进入待审</td>
+              </tr>
+              <tr>
+                <th scope="row">作废指令</th>
+                <td>已审核且指令未执行</td>
+                <td>作废后才能重新提交</td>
+              </tr>
+            </tbody>
+          </table>
+          <ol>
+            <li>在操作列点击详情，查看这一张调拨单。</li>
+            <li>只有草稿或已驳回时，才能编辑并提交审核。</li>
+            <li>指令已下发但未执行时，先作废再重提，不在列表里改数量。</li>
+          </ol>
+        </section>
+        <section id="transfer-detail" data-section-id="transfer-detail">
+          <h2>调拨详情</h2>
+          <p>在衡石中，调拨详情展示调出仓、调入仓、数量，以及 WMS 是否已执行。</p>
+          <p>已下发且尚未执行时，调拨详情里的数量只读。要变更时先作废指令，再重新提交。</p>
+          <table>
+            <caption>调拨详情中的内容</caption>
+            <thead>
+              <tr>
+                <th scope="col">区域</th>
+                <th scope="col">内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">表头</th>
+                <td>单号、状态、调出仓、调入仓</td>
+              </tr>
+              <tr>
+                <th scope="row">明细</th>
+                <td>物料、数量</td>
+              </tr>
+              <tr>
+                <th scope="row">下游</th>
+                <td>WMS 执行结果，包括未执行、执行中和已完成</td>
+              </tr>
+            </tbody>
+          </table>
+          <ol>
+            <li>从操作列进入调拨详情，核对两仓和数量。</li>
+            <li>查看 WMS 是否已经执行。</li>
+            <li>指令未执行时不能在调拨详情里改数量，先作废再重提。</li>
+          </ol>
+        </section>
+        <section id="inventory-count" data-section-id="inventory-count">
+          <h2>盘点审核</h2>
+          <p>在衡石中，盘点审核通过后，差额才交给 WMS 调整，衡石按回传结果更新现存量。</p>
+          <p>盘点单列出账面数量和实盘数量。审核人只确认差异原因，不在衡石中直接改库存。</p>
+        </section>
+        <section id="count-list" data-section-id="count-list">
+          <h2>盘点列表</h2>
+          <p>在衡石中，盘点列表用来按单号、仓库和状态查找盘点单。</p>
+          <table>
+            <caption>盘点列表的查询条件和字段</caption>
+            <thead>
+              <tr>
+                <th scope="col">项目</th>
+                <th scope="col">内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">查询条件</th>
+                <td>单号、仓库、状态</td>
+              </tr>
+              <tr>
+                <th scope="row">列表字段</th>
+                <td>单号、仓库、状态、账面数量、实盘数量</td>
+              </tr>
+              <tr>
+                <th scope="row">状态</th>
+                <td>草稿、待审、已驳回、已审核、已调整</td>
+              </tr>
+            </tbody>
+          </table>
+          <ol>
+            <li>输入单号、仓库或状态后查询。</li>
+            <li>在结果中核对账面数量和实盘数量，不在列表里改现存量。</li>
+          </ol>
+        </section>
+        <section id="count-actions" data-section-id="count-actions">
+          <h2>盘点操作列</h2>
+          <p>在衡石中，盘点操作列按单据状态给出按钮，详情在任何可见状态下都可以打开。</p>
+          <p>编辑和提交审核只出现在草稿和已驳回。列表不提供修改现存量的按钮。</p>
+          <table>
+            <caption>盘点操作列按状态可用的按钮</caption>
+            <thead>
+              <tr>
+                <th scope="col">按钮</th>
+                <th scope="col">可用状态</th>
+                <th scope="col">结果</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">详情</th>
+                <td>全部可见状态</td>
+                <td>打开这一张盘点单</td>
+              </tr>
+              <tr>
+                <th scope="row">编辑</th>
+                <td>草稿、已驳回</td>
+                <td>修改实盘数量或差异原因</td>
+              </tr>
+              <tr>
+                <th scope="row">提交审核</th>
+                <td>草稿、已驳回</td>
+                <td>提交后进入待审</td>
+              </tr>
+            </tbody>
+          </table>
+          <ol>
+            <li>在操作列点击详情，查看这一张盘点单。</li>
+            <li>只有草稿或已驳回时，才能编辑实盘数量并提交审核。</li>
+            <li>操作列不能修改现存量。</li>
+          </ol>
+        </section>
+        <section id="count-detail" data-section-id="count-detail">
+          <h2>盘点详情</h2>
+          <p>在衡石中，盘点详情展示账面数量、实盘数量和差异原因，审核人只确认原因。</p>
+          <p>盘点详情不能修改现存量。审核通过后，差额由 WMS 调整，衡石按回传结果更新。</p>
+          <table>
+            <caption>盘点详情中的内容</caption>
+            <thead>
+              <tr>
+                <th scope="col">区域</th>
+                <th scope="col">内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">表头</th>
+                <td>单号、仓库、状态</td>
+              </tr>
+              <tr>
+                <th scope="row">明细</th>
+                <td>物料、账面数量、实盘数量、差异原因</td>
+              </tr>
+              <tr>
+                <th scope="row">下游</th>
+                <td>审核通过后的 WMS 调整结果</td>
+              </tr>
+            </tbody>
+          </table>
+          <ol>
+            <li>从操作列进入盘点详情，核对账面数量、实盘数量和差异原因。</li>
+            <li>审核人确认差异原因，不在盘点详情里改现存量。</li>
+            <li>审核通过后查看 WMS 回传的调整结果。</li>
+          </ol>
+        </section>
+      </article>
+      <nav class="pager" aria-label="前后文">
+        <a href="/kb/pages/sales.html">上一篇：销售</a>
+        <a href="/kb/pages/wms.html">下一篇：WMS 对接</a>
+      </nav>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <p>衡石手册。正文写在文章小节中，供人阅读，并作为问答检索的来源。</p>
+  </footer>
+</body>
+</html>

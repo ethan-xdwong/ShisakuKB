@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>基础资料 — 衡石手册</title>
+  <meta name="description" content="物料、客户和仓库在基础资料中维护。供应商必须先完成供应商引入，不能在这里直接启用。">
+  <link rel="stylesheet" href="/kb/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "基础资料",
+    "description": "物料、客户和仓库在基础资料中维护。供应商必须先完成供应商引入，不能在这里直接启用。",
+    "inLanguage": "zh-CN",
+    "hasPart": [
+      {"@type": "WebPageElement", "name": "维护物料", "cssSelector": "#master-item"},
+      {"@type": "WebPageElement", "name": "维护客户", "cssSelector": "#master-customer"},
+      {"@type": "WebPageElement", "name": "维护仓库", "cssSelector": "#master-warehouse"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/kb/index.html">衡石手册</a>
+    <p class="header-note">ERP 使用说明</p>
+  </header>
+  <div class="page">
+    <nav class="site-nav" aria-label="手册目录">
+      <p class="nav-label">目录</p>
+      <ol class="nav-list">
+        <li><a href="/kb/index.html">产品概览</a></li>
+        <li><a href="/kb/pages/access.html">登录与权限</a></li>
+        <li><a href="/kb/pages/master-data.html" aria-current="page">基础资料</a></li>
+        <li><a href="/kb/pages/approval.html">审核</a></li>
+        <li><a href="/kb/pages/purchase.html">采购</a></li>
+        <li><a href="/kb/pages/sales.html">销售</a></li>
+        <li><a href="/kb/pages/inventory.html">库存</a></li>
+        <li><a href="/kb/pages/wms.html">WMS 对接</a></li>
+        <li><a href="/kb/pages/shipping.html">发运</a></li>
+        <li><a href="/kb/pages/finance.html">财务系统对接</a></li>
+        <li><a href="/kb/pages/faq.html">常见问题</a></li>
+        <li><a href="/kb/pages/troubleshoot.html">故障排查</a></li>
+        <li><a href="/kb/pages/glossary.html">术语表</a></li>
+      </ol>
+    </nav>
+    <main>
+      <article class="article" data-doc-id="master-data" data-doc-title="基础资料">
+        <header class="article-head">
+          <p class="breadcrumb">衡石手册 / 基础资料</p>
+          <h1>基础资料</h1>
+          <p class="summary">物料、客户和仓库在基础资料中维护。供应商必须先完成供应商引入，不能在这里直接启用。</p>
+          <nav class="onpage" aria-label="本页目录">
+            <ol>
+              <li><a href="#master-item">维护物料</a></li>
+              <li><a href="#master-customer">维护客户</a></li>
+              <li><a href="#master-warehouse">维护仓库</a></li>
+            </ol>
+          </nav>
+        </header>
+        <section id="master-item" data-section-id="master-item">
+          <h2>维护物料</h2>
+          <p>在衡石中，物料是采购、销售和库存单据引用的基本对象，停用后不能再被新单据选中。</p>
+          <p>新建物料时填写编码、名称和基本单位。已被单据引用的物料只能停用，不能删除。</p>
+          <p class="alias">也可称为存货。</p>
+        </section>
+        <section id="master-customer" data-section-id="master-customer">
+          <h2>维护客户</h2>
+          <p>在衡石中，客户用于销售订单和收货地址，未审核启用的客户不能被销售订单选择。</p>
+          <p>维护客户名称、开票信息和默认收货地址。地址不完整时，后续不能向承运方下单。</p>
+        </section>
+        <section id="master-warehouse" data-section-id="master-warehouse">
+          <h2>维护仓库</h2>
+          <p>在衡石中，仓库是逻辑库存地点，实际收货和发货作业由对应的 WMS 仓库执行。</p>
+          <p>每个衡石仓库要绑定一个 WMS 仓库编码。未绑定的仓库不能下发入库单或出库单。</p>
+        </section>
+      </article>
+      <nav class="pager" aria-label="前后文">
+        <a href="/kb/pages/access.html">上一篇：登录与权限</a>
+        <a href="/kb/pages/approval.html">下一篇：审核</a>
+      </nav>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <p>衡石手册。正文写在文章小节中，供人阅读，并作为问答检索的来源。</p>
+  </footer>
+</body>
+</html>

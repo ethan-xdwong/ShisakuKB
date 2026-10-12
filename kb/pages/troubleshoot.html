@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>故障排查 — 衡石手册</title>
+  <meta name="description" content="按现象检查审核、采购前置条件、分批收货、WMS 下发、发运跟踪和财务凭证拒绝。">
+  <link rel="stylesheet" href="/kb/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "故障排查",
+    "description": "按现象检查审核、采购前置条件、分批收货、WMS 下发、发运跟踪和财务凭证拒绝。",
+    "inLanguage": "zh-CN",
+    "hasPart": [
+      {"@type": "WebPageElement", "name": "审核停在待审", "cssSelector": "#trouble-approval"},
+      {"@type": "WebPageElement", "name": "供应商未引入就下单", "cssSelector": "#trouble-vendor"},
+      {"@type": "WebPageElement", "name": "采购目录或价格未审核", "cssSelector": "#trouble-catalog-price"},
+      {"@type": "WebPageElement", "name": "分批收货数量超过剩余", "cssSelector": "#trouble-over-receipt"},
+      {"@type": "WebPageElement", "name": "某批已收但应付未推送", "cssSelector": "#trouble-ap"},
+      {"@type": "WebPageElement", "name": "WMS 未收到单据", "cssSelector": "#trouble-wms"},
+      {"@type": "WebPageElement", "name": "异常记录未关闭", "cssSelector": "#trouble-open-exception"},
+      {"@type": "WebPageElement", "name": "第三方运单号为空", "cssSelector": "#trouble-tracking-no"},
+      {"@type": "WebPageElement", "name": "TMS 进度长时间不更新", "cssSelector": "#trouble-tms-stale"},
+      {"@type": "WebPageElement", "name": "财务系统拒绝凭证", "cssSelector": "#trouble-voucher"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/kb/index.html">衡石手册</a>
+    <p class="header-note">ERP 使用说明</p>
+  </header>
+  <div class="page">
+    <nav class="site-nav" aria-label="手册目录">
+      <p class="nav-label">目录</p>
+      <ol class="nav-list">
+        <li><a href="/kb/index.html">产品概览</a></li>
+        <li><a href="/kb/pages/access.html">登录与权限</a></li>
+        <li><a href="/kb/pages/master-data.html">基础资料</a></li>
+        <li><a href="/kb/pages/approval.html">审核</a></li>
+        <li><a href="/kb/pages/purchase.html">采购</a></li>
+        <li><a href="/kb/pages/sales.html">销售</a></li>
+        <li><a href="/kb/pages/inventory.html">库存</a></li>
+        <li><a href="/kb/pages/wms.html">WMS 对接</a></li>
+        <li><a href="/kb/pages/shipping.html">发运</a></li>
+        <li><a href="/kb/pages/finance.html">财务系统对接</a></li>
+        <li><a href="/kb/pages/faq.html">常见问题</a></li>
+        <li><a href="/kb/pages/troubleshoot.html" aria-current="page">故障排查</a></li>
+        <li><a href="/kb/pages/glossary.html">术语表</a></li>
+      </ol>
+    </nav>
+    <main>
+      <article class="article" data-doc-id="troubleshoot" data-doc-title="故障排查">
+        <header class="article-head">
+          <p class="breadcrumb">衡石手册 / 故障排查</p>
+          <h1>故障排查</h1>
+          <p class="summary">按现象检查审核、采购前置条件、分批收货、WMS 下发、发运跟踪和财务凭证拒绝。</p>
+          <nav class="onpage" aria-label="本页目录">
+            <ol>
+              <li><a href="#trouble-approval">审核停在待审</a></li>
+              <li><a href="#trouble-vendor">供应商未引入就下单</a></li>
+              <li><a href="#trouble-catalog-price">采购目录或价格未审核</a></li>
+              <li><a href="#trouble-over-receipt">分批收货数量超过剩余</a></li>
+              <li><a href="#trouble-ap">某批已收但应付未推送</a></li>
+              <li><a href="#trouble-wms">WMS 未收到单据</a></li>
+              <li><a href="#trouble-open-exception">异常记录未关闭</a></li>
+              <li><a href="#trouble-tracking-no">第三方运单号为空</a></li>
+              <li><a href="#trouble-tms-stale">TMS 进度长时间不更新</a></li>
+              <li><a href="#trouble-voucher">财务系统拒绝凭证</a></li>
+            </ol>
+          </nav>
+        </header>
+        <section id="trouble-approval" data-section-id="trouble-approval">
+          <h2>审核停在待审</h2>
+          <p>审核停在待审时，先确认单据已经提交，并且当前用户拥有该单据类型的审核权限。</p>
+          <ol>
+            <li>打开单据，查看状态是待提交还是待审。</li>
+            <li>若是待提交，由制单人提交。</li>
+            <li>若是待审，换有审核权限的人处理，制单人不能审核自己提交的单据。</li>
+          </ol>
+        </section>
+        <section id="trouble-vendor" data-section-id="trouble-vendor">
+          <h2>供应商未引入就下单</h2>
+          <p>采购订单选不到供应商，或保存时提示供应商不可用，说明供应商引入尚未审核通过。</p>
+          <p>先完成供应商引入，再维护采购目录和价格。不要用停用供应商临时下单。</p>
+        </section>
+        <section id="trouble-catalog-price" data-section-id="trouble-catalog-price">
+          <h2>采购目录或价格未审核</h2>
+          <p>物料选不到，或订单提示没有有效价格，说明采购目录或价格还没有审核通过。</p>
+          <p>到对应页面查看审核状态。通过后再回到采购订单。区域或数量档不匹配时，订单同样取不到价格。</p>
+        </section>
+        <section id="trouble-over-receipt" data-section-id="trouble-over-receipt">
+          <h2>分批收货数量超过剩余</h2>
+          <p>某一批实收数量大于采购订单剩余未收数量时，衡石拒绝更新收货，该批不推应付。</p>
+          <p>核对 WMS 回传数量和订单剩余数量。超量部分应在 WMS 中作为差异处理，不能写入这张采购订单。</p>
+        </section>
+        <section id="trouble-ap" data-section-id="trouble-ap">
+          <h2>某批已收但应付未推送</h2>
+          <p>WMS 已回传实收，但财务系统没有对应应付时，查看该批的推送日志。</p>
+          <p>日志是待推送时，手动重推这一批。日志是拒绝时，按拒绝原因修正后再推。不要等待整单收完才补推。</p>
+        </section>
+        <section id="trouble-wms" data-section-id="trouble-wms">
+          <h2>WMS 未收到单据</h2>
+          <p>WMS 中查不到入库单或出库单时，先看衡石对接日志是未下发、下发失败还是已下发。</p>
+          <p>未下发通常是审核还没通过。下发失败使用原单重推。已下发但 WMS 没有时，把衡石单号交给仓库管理员核对仓库编码。</p>
+        </section>
+        <section id="trouble-open-exception" data-section-id="trouble-open-exception">
+          <h2>异常记录未关闭</h2>
+          <p>签收按钮不可用，或应收不能推送时，检查发运单是否还有未关闭的异常记录。</p>
+          <p>按承运方式完成改派、拦截或改址，并把结果回写衡石。异常关闭后才能签收。</p>
+        </section>
+        <section id="trouble-tracking-no" data-section-id="trouble-tracking-no">
+          <h2>第三方运单号为空</h2>
+          <p>选择了第三方承运商但运单号为空时，承运商下单没有成功，衡石无法查询进度。</p>
+          <p>在发运单上重试下单。重试仍失败时，查看承运商返回的错误，补齐地址或承运商账号后再下单。</p>
+        </section>
+        <section id="trouble-tms-stale" data-section-id="trouble-tms-stale">
+          <h2>TMS 进度长时间不更新</h2>
+          <p>自有物流的进度长时间停在同一节点时，先确认 TMS 中该运单是否仍在运输。</p>
+          <p>TMS 已有新节点而衡石没有时，在对接日志中重新拉取。TMS 也没有新节点时，到 TMS 中登记异常，不要只在衡石改状态。</p>
+        </section>
+        <section id="trouble-voucher" data-section-id="trouble-voucher">
+          <h2>财务系统拒绝凭证</h2>
+          <p>财务系统拒绝凭证时，衡石不会把单据标成已入账。</p>
+          <p>打开拒绝原因，修正供应商、客户、金额或税率后重新推送。拒绝期间不要结清业务单据。</p>
+        </section>
+      </article>
+      <nav class="pager" aria-label="前后文">
+        <a href="/kb/pages/faq.html">上一篇：常见问题</a>
+        <a href="/kb/pages/glossary.html">下一篇：术语表</a>
+      </nav>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <p>衡石手册。正文写在文章小节中，供人阅读，并作为问答检索的来源。</p>
+  </footer>
+</body>
+</html>

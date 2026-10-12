@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WMS 对接 — 衡石手册</title>
+  <meta name="description" content="衡石向 WMS 下发入库单和出库单。采购入库一批对应一张入库单，失败后可以重推。">
+  <link rel="stylesheet" href="/kb/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "WMS 对接",
+    "description": "衡石向 WMS 下发入库单和出库单。采购入库一批对应一张入库单，失败后可以重推。",
+    "inLanguage": "zh-CN",
+    "hasPart": [
+      {"@type": "WebPageElement", "name": "下发入库单", "cssSelector": "#wms-inbound"},
+      {"@type": "WebPageElement", "name": "下发出库单", "cssSelector": "#wms-outbound"},
+      {"@type": "WebPageElement", "name": "接收回传与重推", "cssSelector": "#wms-retry"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/kb/index.html">衡石手册</a>
+    <p class="header-note">ERP 使用说明</p>
+  </header>
+  <div class="page">
+    <nav class="site-nav" aria-label="手册目录">
+      <p class="nav-label">目录</p>
+      <ol class="nav-list">
+        <li><a href="/kb/index.html">产品概览</a></li>
+        <li><a href="/kb/pages/access.html">登录与权限</a></li>
+        <li><a href="/kb/pages/master-data.html">基础资料</a></li>
+        <li><a href="/kb/pages/approval.html">审核</a></li>
+        <li><a href="/kb/pages/purchase.html">采购</a></li>
+        <li><a href="/kb/pages/sales.html">销售</a></li>
+        <li><a href="/kb/pages/inventory.html">库存</a></li>
+        <li><a href="/kb/pages/wms.html" aria-current="page">WMS 对接</a></li>
+        <li><a href="/kb/pages/shipping.html">发运</a></li>
+        <li><a href="/kb/pages/finance.html">财务系统对接</a></li>
+        <li><a href="/kb/pages/faq.html">常见问题</a></li>
+        <li><a href="/kb/pages/troubleshoot.html">故障排查</a></li>
+        <li><a href="/kb/pages/glossary.html">术语表</a></li>
+      </ol>
+    </nav>
+    <main>
+      <article class="article" data-doc-id="wms" data-doc-title="WMS 对接">
+        <header class="article-head">
+          <p class="breadcrumb">衡石手册 / WMS 对接</p>
+          <h1>WMS 对接</h1>
+          <p class="summary">衡石向 WMS 下发入库单和出库单。采购入库一批对应一张入库单，失败后可以重推。</p>
+          <nav class="onpage" aria-label="本页目录">
+            <ol>
+              <li><a href="#wms-inbound">下发入库单</a></li>
+              <li><a href="#wms-outbound">下发出库单</a></li>
+              <li><a href="#wms-retry">接收回传与重推</a></li>
+            </ol>
+          </nav>
+        </header>
+        <section id="wms-inbound" data-section-id="wms-inbound">
+          <h2>下发入库单</h2>
+          <p>在衡石中，入库单是发给 WMS 的收货指令。采购按批次下发，一批对应一张入库单。</p>
+          <p>下发内容包括采购订单号、批次号、仓库、物料和应收数量。WMS 未返回接收成功时，衡石保持待下发，不能当成已收货。</p>
+          <p class="alias">也可称为 WMS 收货任务。</p>
+        </section>
+        <section id="wms-outbound" data-section-id="wms-outbound">
+          <h2>下发出库单</h2>
+          <p>在衡石中，出库单是发给 WMS 的发货指令，来自已审核的销售订单或调拨。</p>
+          <p>出库单包含仓库、物料和应发数量。WMS 拣货完成后回传实发数量。</p>
+        </section>
+        <section id="wms-retry" data-section-id="wms-retry">
+          <h2>接收回传与重推</h2>
+          <p>在衡石中，WMS 回传实收或实发后，衡石才更新收货、出库和现存量。</p>
+          <p>下发失败或超时后，在对接日志中选择重推。重推使用原单号，不新建第二张业务单据。已回传成功的单据不能再次重推。</p>
+        </section>
+      </article>
+      <nav class="pager" aria-label="前后文">
+        <a href="/kb/pages/inventory.html">上一篇：库存</a>
+        <a href="/kb/pages/shipping.html">下一篇：发运</a>
+      </nav>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <p>衡石手册。正文写在文章小节中，供人阅读，并作为问答检索的来源。</p>
+  </footer>
+</body>
+</html>

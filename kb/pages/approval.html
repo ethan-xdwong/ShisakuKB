@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>审核 — 衡石手册</title>
+  <meta name="description" content="单据保存后提交审核。审核通过才能进入下一步或下发外部系统，驳回则退回制单人。">
+  <link rel="stylesheet" href="/kb/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "审核",
+    "description": "单据保存后提交审核。审核通过才能进入下一步或下发外部系统，驳回则退回制单人。",
+    "inLanguage": "zh-CN",
+    "hasPart": [
+      {"@type": "WebPageElement", "name": "提交并通过审核", "cssSelector": "#approval-submit"},
+      {"@type": "WebPageElement", "name": "驳回后重新提交", "cssSelector": "#approval-reject"},
+      {"@type": "WebPageElement", "name": "哪些单据必须审核", "cssSelector": "#approval-scope"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/kb/index.html">衡石手册</a>
+    <p class="header-note">ERP 使用说明</p>
+  </header>
+  <div class="page">
+    <nav class="site-nav" aria-label="手册目录">
+      <p class="nav-label">目录</p>
+      <ol class="nav-list">
+        <li><a href="/kb/index.html">产品概览</a></li>
+        <li><a href="/kb/pages/access.html">登录与权限</a></li>
+        <li><a href="/kb/pages/master-data.html">基础资料</a></li>
+        <li><a href="/kb/pages/approval.html" aria-current="page">审核</a></li>
+        <li><a href="/kb/pages/purchase.html">采购</a></li>
+        <li><a href="/kb/pages/sales.html">销售</a></li>
+        <li><a href="/kb/pages/inventory.html">库存</a></li>
+        <li><a href="/kb/pages/wms.html">WMS 对接</a></li>
+        <li><a href="/kb/pages/shipping.html">发运</a></li>
+        <li><a href="/kb/pages/finance.html">财务系统对接</a></li>
+        <li><a href="/kb/pages/faq.html">常见问题</a></li>
+        <li><a href="/kb/pages/troubleshoot.html">故障排查</a></li>
+        <li><a href="/kb/pages/glossary.html">术语表</a></li>
+      </ol>
+    </nav>
+    <main>
+      <article class="article" data-doc-id="approval" data-doc-title="审核">
+        <header class="article-head">
+          <p class="breadcrumb">衡石手册 / 审核</p>
+          <h1>审核</h1>
+          <p class="summary">单据保存后提交审核。审核通过才能进入下一步或下发外部系统，驳回则退回制单人。</p>
+          <nav class="onpage" aria-label="本页目录">
+            <ol>
+              <li><a href="#approval-submit">提交并通过审核</a></li>
+              <li><a href="#approval-reject">驳回后重新提交</a></li>
+              <li><a href="#approval-scope">哪些单据必须审核</a></li>
+            </ol>
+          </nav>
+        </header>
+        <section id="approval-submit" data-section-id="approval-submit">
+          <h2>提交并通过审核</h2>
+          <p>在衡石中，单据保存后还不能外发，必须提交审核，并由审核人通过后才进入下一步。</p>
+          <pre class="mermaid">
+flowchart TD
+  saveNode["保存单据"] --> submitNode["提交审核"]
+  submitNode --> resultNode{"审核结果"}
+  resultNode -->|通过| nextNode["进入下一步或下发外部系统"]
+  resultNode -->|驳回| backNode["退回制单人"]
+  backNode --> reviseNode["修改后再提交"]
+  reviseNode --> submitNode
+          </pre>
+          <ol>
+            <li>制单人保存单据后点击提交审核。</li>
+            <li>审核人打开待审列表，核对单据后选择通过。</li>
+            <li>审核通过后，单据才能进入下一步或下发外部系统。</li>
+          </ol>
+        </section>
+        <section id="approval-reject" data-section-id="approval-reject">
+          <h2>驳回后重新提交</h2>
+          <p>在衡石中，审核驳回会把单据退回制单人，修改后必须重新提交，不能沿用上一次的审核结论。</p>
+          <ol>
+            <li>审核人填写驳回原因并确认驳回。</li>
+            <li>制单人按原因修改单据。</li>
+            <li>重新提交后，审核人再次处理。</li>
+          </ol>
+        </section>
+        <section id="approval-scope" data-section-id="approval-scope">
+          <h2>哪些单据必须审核</h2>
+          <p>衡石要求供应商引入、采购目录、价格、请购、采购订单、销售订单、调拨和盘点全部经过审核。</p>
+          <p>未出现在这份清单里的基础资料修改，按各自主数据页面的启用规则处理，不能绕过上述单据的审核。</p>
+        </section>
+      </article>
+      <nav class="pager" aria-label="前后文">
+        <a href="/kb/pages/master-data.html">上一篇：基础资料</a>
+        <a href="/kb/pages/purchase.html">下一篇：采购</a>
+      </nav>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <p>衡石手册。正文写在文章小节中，供人阅读，并作为问答检索的来源。</p>
+  </footer>
+  <script src="/kb/js/mermaid.min.js"></script>
+  <script src="/kb/js/render-mermaid.js"></script>
+</body>
+</html>

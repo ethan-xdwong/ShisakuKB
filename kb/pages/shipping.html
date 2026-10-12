@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>发运 — 衡石手册</title>
+  <meta name="description" content="出库完成后选择自有物流或第三方承运商。两条路径都要下单、收寄、查询进度，并处理物流异常。">
+  <link rel="stylesheet" href="/kb/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "发运",
+    "description": "出库完成后选择自有物流或第三方承运商。两条路径都要下单、收寄、查询进度，并处理物流异常。",
+    "inLanguage": "zh-CN",
+    "hasPart": [
+      {"@type": "WebPageElement", "name": "发运怎么走", "cssSelector": "#ship-flow"},
+      {"@type": "WebPageElement", "name": "选择承运方式", "cssSelector": "#ship-mode"},
+      {"@type": "WebPageElement", "name": "向承运方下单", "cssSelector": "#ship-order"},
+      {"@type": "WebPageElement", "name": "运单列表", "cssSelector": "#waybill-list"},
+      {"@type": "WebPageElement", "name": "运单操作列", "cssSelector": "#waybill-actions"},
+      {"@type": "WebPageElement", "name": "运单详情", "cssSelector": "#waybill-detail"},
+      {"@type": "WebPageElement", "name": "安排收寄", "cssSelector": "#ship-pickup"},
+      {"@type": "WebPageElement", "name": "查询物流进度", "cssSelector": "#ship-track"},
+      {"@type": "WebPageElement", "name": "处理物流异常", "cssSelector": "#ship-exception"}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/kb/index.html">衡石手册</a>
+    <p class="header-note">ERP 使用说明</p>
+  </header>
+  <div class="page">
+    <nav class="site-nav" aria-label="手册目录">
+      <p class="nav-label">目录</p>
+      <ol class="nav-list">
+        <li><a href="/kb/index.html">产品概览</a></li>
+        <li><a href="/kb/pages/access.html">登录与权限</a></li>
+        <li><a href="/kb/pages/master-data.html">基础资料</a></li>
+        <li><a href="/kb/pages/approval.html">审核</a></li>
+        <li><a href="/kb/pages/purchase.html">采购</a></li>
+        <li><a href="/kb/pages/sales.html">销售</a></li>
+        <li><a href="/kb/pages/inventory.html">库存</a></li>
+        <li><a href="/kb/pages/wms.html">WMS 对接</a></li>
+        <li><a href="/kb/pages/shipping.html" aria-current="page">发运</a></li>
+        <li><a href="/kb/pages/finance.html">财务系统对接</a></li>
+        <li><a href="/kb/pages/faq.html">常见问题</a></li>
+        <li><a href="/kb/pages/troubleshoot.html">故障排查</a></li>
+        <li><a href="/kb/pages/glossary.html">术语表</a></li>
+      </ol>
+    </nav>
+    <main>
+      <article class="article" data-doc-id="shipping" data-doc-title="发运">
+        <header class="article-head">
+          <p class="breadcrumb">衡石手册 / 发运</p>
+          <h1>发运</h1>
+          <p class="summary">出库完成后选择自有物流或第三方承运商。两条路径都要下单、收寄、查询进度，并处理物流异常。</p>
+          <nav class="onpage" aria-label="本页目录">
+            <ol>
+              <li><a href="#ship-flow">发运怎么走</a></li>
+              <li><a href="#ship-mode">选择承运方式</a></li>
+              <li><a href="#ship-order">向承运方下单</a></li>
+              <li><a href="#waybill-list">运单列表</a></li>
+              <li><a href="#waybill-actions">运单操作列</a></li>
+              <li><a href="#waybill-detail">运单详情</a></li>
+              <li><a href="#ship-pickup">安排收寄</a></li>
+              <li><a href="#ship-track">查询物流进度</a></li>
+              <li><a href="#ship-exception">处理物流异常</a></li>
+            </ol>
+          </nav>
+        </header>
+        <section id="ship-flow" data-section-id="ship-flow">
+          <h2>发运怎么走</h2>
+          <p>在衡石中，发运从出库完成开始，先选定承运方式，再下单、收寄和跟踪，异常关闭后才算签收完成。</p>
+          <pre class="mermaid">
+flowchart TD
+  startNode["出库完成"] --> chooseNode{"承运方式"}
+  chooseNode -->|自有物流| tmsNode["向 TMS 下单"]
+  chooseNode -->|第三方承运商| carrierNode["向承运商下单"]
+  tmsNode --> trackNode["收寄并查询进度"]
+  carrierNode --> trackNode
+  trackNode --> abnormalNode{"是否需要处理异常"}
+  abnormalNode -->|否| doneNode["签收完成"]
+  abnormalNode -->|是| handleNode["处理后再继续跟踪"]
+  handleNode --> trackNode
+          </pre>
+          <ol>
+            <li>出库完成后选择自有物流或第三方承运商。</li>
+            <li>自有物流向 TMS 下单，第三方承运商向承运商下单。</li>
+            <li>记录收寄，并查询在途进度。</li>
+            <li>没有未关闭异常后，才允许签收完成。</li>
+          </ol>
+        </section>
+        <section id="ship-mode" data-section-id="ship-mode">
+          <h2>选择承运方式</h2>
+          <p>在衡石中，发运要么走自有物流并使用 TMS，要么走第三方承运商，两种方式不能写在同一张运单上。</p>
+          <p>收货地址或承运商缺失时，系统不下单。先补齐销售订单上的地址和承运方式，再回到发运。</p>
+          <p class="alias">第三方承运商也可称为外部快递。</p>
+        </section>
+        <section id="ship-order" data-section-id="ship-order">
+          <h2>向承运方下单</h2>
+          <p>在衡石中，运单是发运下单后的跟踪对象。自有物流向 TMS 创建运单，第三方承运商向承运商创建寄件单并回写运单号。</p>
+          <p>运单号为空时，不能查询进度。下单失败可按原发运单重试，不要手工另开一张没有来源的运单。</p>
+          <p class="alias">也可称为运输任务。</p>
+        </section>
+        <section id="waybill-list" data-section-id="waybill-list">
+          <h2>运单列表</h2>
+          <p>在衡石中，运单列表用来按运单号、销售订单、承运方式和进度查找运单。</p>
+          <table>
+            <caption>运单列表的查询条件和字段</caption>
+            <thead>
+              <tr>
+                <th scope="col">项目</th>
+                <th scope="col">内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">查询条件</th>
+                <td>运单号、销售订单、承运方式、进度</td>
+              </tr>
+              <tr>
+                <th scope="row">列表字段</th>
+                <td>运单号、销售订单、承运方式、进度、是否有未关闭异常</td>
+              </tr>
+              <tr>
+                <th scope="row">进度</th>
+                <td>待下单、待揽收、已揽收、在途、派送中、已签收</td>
+              </tr>
+            </tbody>
+          </table>
+          <ol>
+            <li>输入运单号、销售订单、承运方式或进度后查询。</li>
+            <li>在结果中看运单号是否已回写，以及是否还有未关闭异常。</li>
+          </ol>
+        </section>
+        <section id="waybill-actions" data-section-id="waybill-actions">
+          <h2>运单操作列</h2>
+          <p>在衡石中，运单操作列始终提供详情。运单号为空时可以重新下单，有未关闭异常时进入异常处理。</p>
+          <p>运单操作列不提供无来源的手工建单。下单失败时按原发运单重试。</p>
+          <table>
+            <caption>运单操作列按状态可用的按钮</caption>
+            <thead>
+              <tr>
+                <th scope="col">按钮</th>
+                <th scope="col">可用状态</th>
+                <th scope="col">结果</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">详情</th>
+                <td>全部可见运单</td>
+                <td>打开这一张运单</td>
+              </tr>
+              <tr>
+                <th scope="row">重新下单</th>
+                <td>运单号为空</td>
+                <td>按原发运单再次向承运方下单</td>
+              </tr>
+              <tr>
+                <th scope="row">处理异常</th>
+                <td>存在未关闭异常</td>
+                <td>进入滞留、拒收、地址错误或破损的处理</td>
+              </tr>
+            </tbody>
+          </table>
+          <ol>
+            <li>在运单操作列点击详情，查看这一张运单。</li>
+            <li>运单号为空时点击重新下单，不要另开一张没有来源的运单。</li>
+            <li>有未关闭异常时，从运单操作列进入异常处理。</li>
+          </ol>
+        </section>
+        <section id="waybill-detail" data-section-id="waybill-detail">
+          <h2>运单详情</h2>
+          <p>在衡石中，运单详情展示承运方式、运单号、进度节点和异常。</p>
+          <p>异常未关闭时，运单详情不能签收。自有物流和第三方承运商使用同一套进度节点。</p>
+          <table>
+            <caption>运单详情中的内容</caption>
+            <thead>
+              <tr>
+                <th scope="col">区域</th>
+                <th scope="col">内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">表头</th>
+                <td>承运方式、运单号、销售订单</td>
+              </tr>
+              <tr>
+                <th scope="row">进度</th>
+                <td>待揽收、已揽收、在途、派送中、已签收</td>
+              </tr>
+              <tr>
+                <th scope="row">异常</th>
+                <td>滞留、拒收、地址错误、破损，以及是否已关闭</td>
+              </tr>
+            </tbody>
+          </table>
+          <ol>
+            <li>打开运单详情，核对承运方式、运单号和进度节点。</li>
+            <li>查看未关闭异常的类型和处理结果。</li>
+            <li>异常未关闭时，运单详情不提供签收。</li>
+          </ol>
+        </section>
+        <section id="ship-pickup" data-section-id="ship-pickup">
+          <h2>安排收寄</h2>
+          <p>在衡石中，收寄记录揽收和派送。自有物流由 TMS 安排揽收和派送，第三方承运商按承运商上门取件或网点寄件。</p>
+          <p>衡石记下揽收时间。没有揽收记录时，进度保持待揽收，不能写成在途。</p>
+        </section>
+        <section id="ship-track" data-section-id="ship-track">
+          <h2>查询物流进度</h2>
+          <p>在衡石中，物流进度按运单展示。自有物流向 TMS 拉取在途节点，第三方承运商按运单号向承运商查询。</p>
+          <p>两条路径在衡石里使用同一套节点：待揽收、已揽收、在途、派送中、已签收。长时间没有新节点时，先核对运单号再决定是否进入异常。</p>
+        </section>
+        <section id="ship-exception" data-section-id="ship-exception">
+          <h2>处理物流异常</h2>
+          <p>在衡石中，物流异常包括滞留、拒收、地址错误和破损，要按承运方式处理，异常未关闭时不能签收，也不能推送应收。</p>
+          <p>自有物流在 TMS 中改派或拦截。第三方承运商向承运商发起拦截或改址。处理结果回写衡石后，才能关闭这条物流异常并继续跟踪。</p>
+        </section>
+      </article>
+      <nav class="pager" aria-label="前后文">
+        <a href="/kb/pages/wms.html">上一篇：WMS 对接</a>
+        <a href="/kb/pages/finance.html">下一篇：财务系统对接</a>
+      </nav>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <p>衡石手册。正文写在文章小节中，供人阅读，并作为问答检索的来源。</p>
+  </footer>
+  <script src="/kb/js/mermaid.min.js"></script>
+  <script src="/kb/js/render-mermaid.js"></script>
+</body>
+</html>
